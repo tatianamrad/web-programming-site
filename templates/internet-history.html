@@ -1,85 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History of the Internet</title>
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block title %}History of the Internet{% endblock %}
 
-    <header>
-    <h1>History of the Internet</h1>
-   <nav>
-            <p><a href="/">Home</a></p>
-            <p><a href="/internet-history">Internet History</a></p>
-              <p><a href="/web-history">Web History</a></p>
-     </nav>
+{% block header_title %}History of the Internet{% endblock %}
 
-    </header>
+{% block content %}
+<section>
+    <h2>Introduction</h2>
+    <p>
+        With the technological advancements of our contemporary world, the internet has revolutionized the way the world works It allows information to travel anywhere in a matter of seconds. The internet was first created to facilitate communication between computers in different areas, and now it allows billions of devices to connect, simplifying mass communication and the sharing of media. What is special about the internet is that it is not owned by a single person, company, or government; it is simply there to make sure data finds its way from one point to another without getting lost. 
+    </p>
+</section> 
 
-    <main>
+<section>
+    <h2>Key Milestones</h2>
+    <article>
+        <h3>1969 - First Message through ARPANET is Sent</h3>
+        <p>On the 29th of October 1969, ARPANET (Advanced Research Projects Agency Network) went online. ARPANET was the first wide-area computer network to use packet switching, which is why it is considered the foundation of the modern internet. Packet switching refers to the process in which data is broken down into small units called packets that could travel through the network and be regrouped at the destination. It connected four universities: the University of California at Los Angeles (UCLA), Stanford Research Institute (SRI), University of California-Santa Barbara, and University of Utah, in order for them to share resources remotely. The first message sent over this network was “LO”. It was sent by UCLA student Charley Kline through Leonard Kleinrock’s computer to SRI. The intended message was “Login”, but due to the system crashing, only the first two letters were delivered. An hour later, the SDS Sigma 7 computer effected a full login. This rough system gave computer scientists and engineers the opportunity to begin refining ideas for a more efficient, reliable communications network.</p>
+    </article>
+    
+    <article>
+        <h3>1974: The Creation of the TCP/IP Protocol</h3>
+        <p>The fundamental Internet Protocol (IP) along with the widely used Transmission Control Protocol (TCP), together referred to as TCP/IP, form the basis of the Internet. IP (Internet Protocol) handles simple addressing and routing. It puts destination addresses on data packets and sends them across networks. TCP breaks big files into numbered segments at the source and reassembles them at the destination. In 1974, computer scientists Vinton Cerf and Robert Kahn published their paper, “A Protocol for Packet Network Intercommunication”. During that year, packet-switching networks such as ARPANET already existed, but they were isolated data systems. The transmission rates, packet sizes, and hardware standards used by each network were entirely different. Cerf and Kahn solved this issue by introducing a new software architecture based on TCP and a Gateway device. This invention helped connect completely different networks together instead of forcing all computers to use the same hardware.</p>
+    </article>
 
-        <section>
-            <h2>Introduction</h2>
-            <p>
-                With the technological advancements of our contemporary world, the internet has revolutionized the way the world works It allows information to travel anywhere in a matter of seconds. The internet was first created to facilitate communication between computers in different areas, and now it allows billions of devices to connect, simplifying mass communication and the sharing of media. What is special about the internet is that it is not owned by a single person, company, or government; it is simply there to make sure data finds its way from one point to another without getting lost. 
-            </p>
-            
-        </section> 
+    <article>
+        <h3>1983: ARPANET Adopts TCP/IP (“Flag Day”)</h3>
+        <p>On January 1, 1983, also known as “Flag Day”, the U.S. Defense Advanced Research Projects Agency (DARPA) implemented a mandatory switch from the older host NCP (Network Control Protocol) to TCP/IP across the entire ARPANET. NCP was permanently shut down that day, with any computer site that had not upgraded to run the TCP/IP protocol being completely disconnected from the network. Flag Day marks the official beginning of the Internet’s existence. Converting ARPANET into a TCP/IP moved computer networking from an era of isolated experimental networks to a single, unified global internetwork.</p>
+    </article>
 
-        <section>
-            <h2>Key Milestones</h2>
-            <article>
-                <h3>1969 - First Message through ARPANET is Sent</h3>
-                <p>On the 29th of October 1969, ARPANET (Advanced Research Projects Agency Network) went online. ARPANET was the first wide-area computer network to use packet switching, which is why it is considered the foundation of the modern internet. Packet switching refers to the process in which data is broken down into small units called packets that could travel through the network and be regrouped at the destination. It connected four universities: the University of California at Los Angeles (UCLA), Stanford Research Institute (SRI), University of California-Santa Barbara, and University of Utah, in order for them to share resources remotely. The first message sent over this network was “LO”. It was sent by UCLA student Charley Kline through Leonard Kleinrock’s computer to SRI. The intended message was “Login”, but due to the system crashing, only the first two letters were delivered. An hour later, the SDS Sigma 7 computer effected a full login. This rough system gave computer scientists and engineers the opportunity to begin refining ideas for a more efficient, reliable communications network.</p>
-            </article>
-            <article>
-                <h3>1974: The Creation of the TCP/IP Protocol</h3>
-                <p>The fundamental Internet Protocol (IP) along with the widely used Transmission Control Protocol (TCP), together referred to as TCP/IP, form the basis of the Internet. IP (Internet Protocol) handles simple addressing and routing. It puts destination addresses on data packets and sends them across networks. TCP breaks big files into numbered segments at the source and reassembles them at the destination. In 1974, computer scientists Vinton Cerf and Robert Kahn published their paper, “A Protocol for Packet Network Intercommunication”. During that year, packet-switching networks such as ARPANET already existed, but they were isolated data systems. The transmission rates, packet sizes, and hardware standards used by each network were entirely different. Cerf and Kahn solved this issue by introducing a new software architecture based on TCP and a Gateway device. This invention helped connect completely different networks together instead of forcing all computers to use the same hardware.</p>
-            </article>
+    <article>
+        <h3>1983: Invention of the Domain Name System (DNS)</h3>
+        <p>While working at ISI in the 1980s, Paul Mockapetris invented the DNS: Domain Name System, a revolutionary invention for the internet. He introduced it to replace the static HOSTS.TXT file which was utilized to manually map IP addresses to hostnames. The DNS allows any person to access websites using human-understandable domain names such as www.youtube.com rather than numerical IP addresses like 141.193.213.20 readable by computers.</p>
+    </article>
+    
+    <article>
+        <h3>1986: Launch of the NSFNET Backbone</h3>
+        <p>One of the most important TCP/IP-based networks was NSFNET, established in 1986 by the National Science Foundation to connect academic researchers to a system of five university supercomputer centers. It took the position of ARPANET as the main government network connecting American universities and research centers. NSFNET significantly expanded access to academic and research networks outside of DARPA's military domain. It served as the primary backbone of American Internet. The model that still characterizes internet infrastructure today was formed by the network's design, which consists of a high-speed backbone connecting regional networks.</p>
+    </article>
 
-            <article>
-                <h3>1983: ARPANET Adopts TCP/IP (“Flag Day”)</h3>
-                <p>On January 1, 1983, also known as “Flag Day”, the U.S. Defense Advanced Research Projects Agency (DARPA) implemented a mandatory switch from the older host NCP (Network Control Protocol) to TCP/IP across the entire ARPANET. NCP was permanently shut down that day, with any computer site that had not upgraded to run the TCP/IP protocol being completely disconnected from the network. Flag Day marks the official beginning of the Internet’s existence. Converting ARPANET into a TCP/IP moved computer networking from an era of isolated experimental networks to a single, unified global internetwork.</p>
-            </article>
+    <article>
+        <h3>1995: Decommissioning of NSFNET and Internet Privatization</h3>
+        <p>During the early 1990s, government-funded networks operated under a policy that did not permit the use of the backbone for commercial or profit-making purposes. However, private internet providers started popping up for corporate clients. On April 30th 1995, the NSF officially deactivated the NSFNET backbone. The American government stepped back from running network infrastructure. The carrying of Internet traffic was transferred to commercial Internet Service Providers and private Network Access Points. This event highlights the official privatization and commercialization of the Internet. Removing government restrictions allowed businesses, household consumers, and personal web pages to thrive on the open market. It transformed the Internet from an academic project into the globally accessible tool we use today.</p>
+    </article>
 
-            <article>
-                <h3>1983: Invention of the Domain Name System (DNS)</h3>
-                <p>While working at ISI in the 1980s, Paul Mockapetris invented the DNS: Domain Name System, a revolutionary invention for the internet. He introduced it to replace the static HOSTS.TXT file which was utilized to manually map IP addresses to hostnames. The DNS allows any person to access websites using human-understandable domain names such as www.youtube.com rather than numerical IP addresses like 141.193.213.20 readable by computers.</p>
-            </article>
-            <article>
-                <h3>1986: Launch of the NSFNET Backbone </h3>
-                <p>One of the most important TCP/IP-based networks was NSFNET, established in 1986 by the National Science Foundation to connect academic researchers to a system of five university supercomputer centers. It took the position of ARPANET as the main government network connecting American universities and research centers. NSFNET significantly expanded access to academic and research networks outside of DARPA's military domain. It served as the primary backbone of American Internet. The model that still characterizes internet infrastructure today was formed by the network's design, which consists of a high-speed backbone connecting regional networks.</p>
-        </article>
+    <article>
+        <h3>1997: Introduction of Wi-Fi (IEEE 802.11)</h3>
+        <p>In 1997, the Institute of Electrical and Electronics Engineers (IEEE) introduced the first wireless networking standard, IEEE 802.11, which became widely known as Wi-Fi. Wi-Fi enabled computers and other devices to connect wirelessly to high-speed local area networks and the wider internet through radio frequencies, removing the need for physical Ethernet cables and establishing the foundation for mobile computing.</p>
+    </article>
 
-            <article>
-                <h3>1995: Decommissioning of NSFNET and Internet Privatization</h3>
-               
-                <p>During the early 1990s, government-funded networks operated under a policy that did not permit the use of the backbone for commercial or profit-making purposes. However, private internet providers started popping up for corporate clients. On April 30th 1995, the NSF officially deactivated the NSFNET backbone. The American government stepped back from running network infrastructure. The carrying of Internet traffic was transferred to commercial Internet Service Providers and private Network Access Points. This event highlights the official privatization and commercialization of the Internet. Removing government restrictions allowed businesses, household consumers, and personal web pages to thrive on the open market. It transformed the Internet from an academic project into the globally accessible tool we use today.</p>
-            </article>
-        </section>
+    <article>
+        <h3>2000s: Transition to Consumer Broadband</h3>
+        <p>In the early 2000s, high-speed broadband technologies such as DSL and cable internet supplanted slow dial-up connections. By providing "always-on" internet access and considerably faster data transfer, broadband enabled media sharing, digital streaming, e-commerce, and real-time web applications to flourish worldwide.</p>
+    </article>
 
-        <section>
-        <h2>References: </h2>
-                <p><a href="https://www.livescience.com/20727-internet-history.html" >Live Science - Internet History</a></p>
-                <p><a href="https://www.lk.cs.ucla.edu/internet_first_words.html" >Leonard Kleinrock - UCLA</a></p>
-                <p><a href="https://www.historyofinformation.com/detail.php?entryid=1108" >History of Information</a></p>
-                <p><a href="https://www.cs.princeton.edu/courses/archive/fall06/cos561/papers/cerf74.pdf" >Computer Science Department - Princeton University</a></p>
-                <p><a href="https://www.rfc-editor.org/info/rfc801/" >RFC Editor - RFC 801</a></p>
-                <p><a href="https://www.isi.edu/news/972810/and-the-dns-was-born/" >Information Sciences Institute</a></p>
-                <p><a href="https://datatracker.ietf.org/doc/rfc882/" >RFC 882</a></p>
-                <p><a href="https://www.nsf.gov/impacts/internet" >National Science Foundation</a></p>
-                <p><a href="https://historyofdomainnames.com/nsfnet-the-history-of-domain-names/" >History of Domain Names</a></p>
-                <p><a href="https://www.analysysmason.com/consulting/articles/anniversary-commercial-internet/" >Analysys Mason</a></p>
-            
-    </section>
+    <article>
+        <h3>2007: The Launch of the iPhone</h3>
+        <p>In 2007, Apple launched the iPhone, combining cellular networking with a full desktop-class web browser and multi-touch interface. With 3G and 4G networks, mobile internet allowed billions of people worldwide to remain connected to the internet from handheld smartphones.</p>
+    </article>
+</section>
 
-    </main>
-    <footer>
-        <p>Web Programming — built with Flask and deployed on Render.</p>
-        <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, USEK. (Fall 2026-2027)</p>
-    </footer>
-</body>
-
-</html>
+<section>
+    <h2>References:</h2>
+    <p><a href="https://www.livescience.com/20727-internet-history.html">Live Science - Internet History</a></p>
+    <p><a href="https://www.lk.cs.ucla.edu/internet_first_words.html">Leonard Kleinrock - UCLA</a></p>
+    <p><a href="https://www.historyofinformation.com/detail.php?entryid=1108">History of Information</a></p>
+    <p><a href="https://www.cs.princeton.edu/courses/archive/fall06/cos561/papers/cerf74.pdf">Computer Science Department - Princeton University</a></p>
+    <p><a href="https://www.rfc-editor.org/info/rfc801/">RFC Editor - RFC 801</a></p>
+    <p><a href="https://www.isi.edu/news/972810/and-the-dns-was-born/">Information Sciences Institute</a></p>
+    <p><a href="https://datatracker.ietf.org/doc/rfc882/">RFC 882</a></p>
+    <p><a href="https://www.nsf.gov/impacts/internet">National Science Foundation</a></p>
+    <p><a href="https://historyofdomainnames.com/nsfnet-the-history-of-domain-names/">History of Domain Names</a></p>
+    <p><a href="https://www.analysysmason.com/consulting/articles/anniversary-commercial-internet/">Analysys Mason</a></p>
+    <p><a href="https://standards.ieee.org/">IEEE Standard 802.11</a></p>
+    <p><a href="https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/">Apple Inc. - iPhone Announcement (2007)</a></p>
+</section>
+{% endblock %}
