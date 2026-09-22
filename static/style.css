@@ -57,16 +57,21 @@ header p {
   font-style: normal;
 }
 
-/* Navigation Bar */
+/* Navigation Bar (Flexbox Layout) */
 nav {
   background-color: var(--nav-bg-color);
   border-top: 1px solid var(--accent-border);
   border-bottom: 2px solid var(--accent-border);
   border-radius: var(--border-radius);
+  
+  /* Modern Flexbox Centered Row Layout */
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--spacing-md);
+  
+  gap: var(--spacing-sm) var(--spacing-md);
   padding: var(--spacing-sm) var(--spacing-md);
   margin-top: var(--spacing-md);
 }
@@ -79,13 +84,14 @@ nav a {
   color: var(--text-primary);
   text-decoration: none;
   font-weight: 600;
-  padding: 0.25rem 0.5rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Main Content Area */
 main {
-  max-width: 900px;
+  max-width: 960px;
   margin: var(--spacing-lg) auto;
   padding: 0 var(--spacing-md);
 }
@@ -120,24 +126,51 @@ a {
   text-decoration: underline;
 }
 
-/* Lists */
-ul, ol {
+/* Weekly Work Gallery (.weekly-list - Modern CSS Grid Layout) */
+.weekly-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-md) 0;
+  
+  /* CSS Grid Responsive Layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.weekly-list li {
+  margin-bottom: 0;
+  background-color: var(--nav-bg-color);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.weekly-list li a {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+/* Default Lists Fallback */
+ul:not(.weekly-list), ol {
   padding-left: var(--spacing-lg);
   margin: var(--spacing-md) 0;
 }
 
-li {
+ul:not(.weekly-list) li {
   margin-bottom: var(--spacing-sm);
   color: var(--text-primary);
 }
 
-li a {
-  font-size: 1.1rem;
-}
-
 /* Shared Container Utility */
 .container {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
 }
