@@ -16,7 +16,7 @@ Reads the exact field `name` values from the profile form; `skills` and
   .profile h2 { border-bottom: 2px solid {{ data.get('project_color', '#336699') }};
                 display: inline-block; padding-bottom: .15rem; }
   .profile dl { display: grid; grid-template-columns: 220px 1fr; gap: .35rem 1rem; margin: 0; }
-  .profile dt { font-weight: 600; color: #475569; }
+  .profile dt { font-weight: 600; color: #D5DC9C; }
   .profile dd { margin: 0; }
   .chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; margin: .3rem 0 0; }
   .chip { border: 1px solid {{ data.get('project_color', '#336699') }};
@@ -129,7 +129,7 @@ Reads the exact field `name` values from the profile form; `skills` and
   </section>
 
   {% if data.get('form_version') %}
-  <p style="margin-top: 2rem; color: #64748b; font-size: 0.85rem">
+  <p style="margin-top: 2rem; color: #D5DC9C; font-size: 0.85rem">
     Form version {{ data.get('form_version') }} —
     <a href="{{ url_for('submit_profile') }}">edit and resubmit</a>
   </p>
