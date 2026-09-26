@@ -1,0 +1,281 @@
+/* Form Specific Styles Sheet: form_style.css
+   Overrides and extends my_styles.css for profile-form.html*/
+
+/* 1. Centered Form Container Layout */
+form {
+  max-width: 720px;
+  margin: 0 auto;
+  display: block; /* Switched from flex to block layout so direct children don't wrap onto separate lines */
+  width: 100%;
+}
+
+/* Page Introductory Text */
+main p {
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* 2. Main Section Fieldsets (Sections 1 through 4) */
+form > fieldset {
+  background-color: var(--card-bg-color);
+  border: 2px solid var(--accent-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg) var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Legend Styling for Main Sections (Round Pill Badges with Forest Green Theme) */
+form > fieldset > legend {
+  font-family: var(--font-family-serif);
+  color: var(--highlight-color);
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 0.3rem 0.9rem;
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+}
+
+/* 3. Nested Radio Group Fieldsets (Borders & Extra Spacing Removed) */
+fieldset fieldset {
+  border: none !important;
+  padding: var(--spacing-sm) 0 !important;
+  margin: var(--spacing-sm) 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+fieldset fieldset legend {
+  border: none !important;
+  padding: 0 !important;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: transparent !important;
+  margin-bottom: 0.5rem;
+  display: block;
+  width: 100%;
+}
+
+/* 4. Labels and Form Elements Formatting */
+label {
+  display: inline-block;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  font-size: 0.98rem;
+}
+
+/* Automatic Required Field Asterisks */
+label:has(+ input[required]),
+label:has(+ select[required]) {
+  position: relative;
+}
+
+label:has(+ input[required])::after,
+label:has(+ select[required])::after {
+  content: " *";
+  color: var(--highlight-color);
+  font-weight: bold;
+}
+
+/* Inputs, Selects, and Textareas */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="url"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem var(--spacing-sm);
+  background-color: var(--nav-bg-color);
+  color: var(--text-primary);
+  border: 1.5px solid var(--accent-border);
+  border-radius: 8px;
+  font-family: var(--font-family-serif) !important;
+  font-size: 0.95rem;
+  transition: all 0.25s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Make Date, Month, & Time Picker Icons Light/Visible on Dark Background */
+input[type="date"],
+input[type="month"],
+input[type="time"] {
+  color-scheme: dark;
+}
+
+/* Force Datalist Input (Primary Language) to Match Dark Theme */
+input[list="languages"] {
+  background-color: var(--nav-bg-color) !important;
+  color: var(--text-primary) !important;
+}
+
+datalist {
+  background-color: var(--card-bg-color);
+  color: var(--text-primary);
+}
+
+/* Textarea Specific Formatting & Uniform Font Fix */
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: var(--font-family-serif) !important;
+}
+
+/* Uniform Placeholder Font & Style (Regular, Not Italic) */
+::placeholder,
+textarea::placeholder,
+input::placeholder {
+  font-family: var(--font-family-serif) !important;
+  color: var(--text-muted);
+  opacity: 0.75;
+  font-style: normal;
+}
+
+/* Color Picker Input */
+input[type="color"] {
+  width: 65px;
+  height: 42px;
+  padding: 3px;
+  background-color: var(--nav-bg-color);
+  border: 1.5px solid var(--accent-border);
+  border-radius: 8px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+/* 5. Interactive Focus Effects */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 8px rgba(163, 194, 104, 0.4);
+  background-color: #162214;
+}
+
+/* Checkbox & Radio Base Alignment */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--highlight-color);
+  transform: scale(1.15);
+  margin-right: 0.4rem;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+/* 6. Confirmation Checkbox and Label Forced Horizontal Alignment */
+#confirmation {
+  display: inline-block !important;
+  width: auto !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  margin-right: 0.4rem !important;
+  vertical-align: middle !important;
+  float: none !important;
+}
+
+label[for="confirmation"] {
+  display: inline !important;
+  vertical-align: middle !important;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+}
+
+/* Select Options & Optgroups */
+option {
+  background-color: var(--card-bg-color);
+  color: var(--text-primary);
+}
+
+optgroup {
+  color: var(--highlight-color);
+  font-weight: 700;
+  background-color: var(--nav-bg-color);
+}
+
+/* 7. Submit & Reset Buttons Horizontal Alignment (Side-By-Side) */
+input[type="submit"],
+input[type="reset"] {
+  font-family: var(--font-family-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.85rem 1.8rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block !important;
+  width: auto !important;
+  margin-right: 0.75rem !important;
+  margin-top: 0.8rem !important;
+  margin-bottom: 1.5rem !important;
+  vertical-align: middle !important;
+  float: none !important;
+  clear: none !important;
+}
+
+/* Submit Button Accent Styling */
+input[type="submit"] {
+  background: linear-gradient(135deg, var(--highlight-color), #82a347);
+  color: #121C10;
+  border: 2px solid var(--highlight-color);
+  box-shadow: 0 4px 10px rgba(163, 194, 104, 0.3);
+}
+
+input[type="submit"]:hover {
+  background: linear-gradient(135deg, #b5d678, var(--highlight-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(163, 194, 104, 0.5);
+}
+
+/* Reset Button Accent Styling */
+input[type="reset"] {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 2px solid var(--accent-border);
+}
+
+input[type="reset"]:hover {
+  background-color: rgba(66, 91, 45, 0.3);
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+  transform: translateY(-2px);
+}
+
+/* Active Click Feedback for Buttons */
+input[type="submit"]:active,
+input[type="reset"]:active {
+  transform: translateY(0);
+}
+
+/* 8. Fix for Submitted Profile Page (profile.html) Muted Text Colors */
+dt, 
+th, 
+td.label, 
+.profile-label, 
+.muted-text {
+  color: var(--text-muted) !important;
+  font-weight: 600;
+}
+
+p a, 
+.profile-footer a {
+  color: var(--highlight-color) !important;
+  text-decoration: underline;
+}

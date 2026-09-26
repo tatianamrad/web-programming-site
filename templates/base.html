@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} My Web Programming Portfolio {% endblock %}</title>
-    <link rel="stylesheet"
- href="{{ url_for('static', filename='style.css') }}" />
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='my_styles.css') }}">
+ {% block head %}{% endblock %}
 </head>
 <body>
     <header>
@@ -19,6 +18,7 @@
     <p><a href="/internet-history-ai">Internet History (AI)</a></p>
     <p><a href="/web-history">Web History</a></p>
     <p><a href="/web-history-ai">Web History (AI)</a></p>
+    <p><a href="/profile-form">Profile Form</a></p>
     </nav>
     {% endblock %}
 </header>
