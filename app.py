@@ -50,6 +50,7 @@ def home():
         {"week": 2, "title": "History of the Web", "url": "/web-history"},
         {"week": 2, "title": "History of the Internet (AI)", "url": "/internet-history-ai"},
         {"week": 2, "title": "History of the Web (AI)", "url": "/web-history-ai"},
+       
         {"week": 4, "title": "Engineering Student Profile", "url": "/submit-profile"},
     ]
     return render_template("index.html", weekly_work=weekly_work)
@@ -73,6 +74,7 @@ def internet_history_ai():
 @app.route("/web-history-ai")
 def web_history_ai():
     return render_template("web-history-ai.html")
+
 
 
 @app.route("/submit-profile", methods=["GET", "POST"])
