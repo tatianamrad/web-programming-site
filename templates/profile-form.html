@@ -13,7 +13,7 @@
 <fieldset>
 <legend>1. Personal Information</legend>
 <label for="student_id"> Student ID: </label>
-<input type="number" id="student_id" name="student_id" pattern="20[0-2][0-9][0-9]{5}" placeholder="202312345" size="45" required><br><br>
+<input type="number" id="student_id" name="student_id" min="200000000" max="202999999" placeholder="202312345" size="45" required><br><br>
 
 <label for="fullname"> Full Name: </label>
 <input type="text" id="fullname" name="fullname" placeholder="First name and last name" size="45" maxlength="100" required><br><br>
@@ -28,7 +28,7 @@
 <input type="date" id="birthdate" name="birthdate" size="45"  min="1950-01-01" max="2016-01-01" required><br><br>
 
 <label for="portfolio"> GitHub: </label>
-<input type="url" id="portfolio" name="portfolio" pattern="https://github\.com/[A-Za-z0-9-]+" size="45" placeholder="https://github.com/username" required> <br><br>
+<input type="url" id="portfolio" name="portfolio" pattern="https://github\.com/[A-Za-z0-9-]+" size="45" placeholder="https://github.com/username"> <br><br>
 
 <label for="gin446">GIN446 website: </label>
 <input type="url" id="gin446" name="gin446" size="45" placeholder="Your RENDER website link"><br><br>
