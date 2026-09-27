@@ -45,6 +45,7 @@ app = Flask(__name__)
 def home():
     """Serve the portfolio home page."""
     weekly_work = [
+        {"week": 1, "title": "Live Site Launched", "url": "/"},
         {"week": 2, "title": "History of the Internet", "url": "/internet-history"},
         {"week": 2, "title": "History of the Web", "url": "/web-history"},
         {"week": 2, "title": "History of the Internet (AI)", "url": "/internet-history-ai"},
