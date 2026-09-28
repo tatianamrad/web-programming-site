@@ -96,6 +96,16 @@ nav a {
   padding: 0.5rem;
   border-radius: 6px;
   width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Nav Links Hover & Focus Glow */
+nav a:hover,
+nav a:focus {
+  color: var(--highlight-color);
+  background-color: var(--card-bg-color);
+  box-shadow: 0 0 10px rgba(163, 194, 104, 0.35);
+  text-shadow: 0 0 6px rgba(163, 194, 104, 0.4);
 }
 
 /* Main Content Mobile Layout */
@@ -157,6 +167,15 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Main Menu Items Hover Glow */
+.weekly-list li:hover {
+  border-color: var(--highlight-color);
+  background-color: var(--card-bg-color);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(163, 194, 104, 0.3);
 }
 
 .weekly-list li a {
@@ -164,6 +183,7 @@ a {
   font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 /* Standard Lists Fallback */
