@@ -186,6 +186,10 @@ a {
   transition: color 0.3s ease;
 }
 
+.weekly-list li:hover a {
+  color: var(--highlight-color);
+}
+
 /* Standard Lists Fallback */
 ul:not(.weekly-list), ol {
   padding-left: var(--spacing-md);
