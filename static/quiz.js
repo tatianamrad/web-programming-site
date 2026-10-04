@@ -144,7 +144,7 @@ function buildCorrection() {
    else result="Result: Incorrect";
    explanation ="Explanation: " +""+ questions[i].explanation;
 
-   correction += question +"\n\n"+ useranswer +"\n" + correctans +"\n" +result + "\n"+ explanation +"\n\n ----------------------------------------------------------------------\n\n" ;
+   correction += question +"\n\n"+ useranswer +"\n" + correctans +"\n" +result + "\n"+ explanation +"\n\n ------------------------------\n\n" ;
   }
   return correction;
 }
