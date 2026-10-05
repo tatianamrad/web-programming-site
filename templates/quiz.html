@@ -1,6 +1,11 @@
 {% extends "base.html" %} {% block title %} Quiz {% endblock %} {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}" />
-{% endblock %} {% block content%}
+{% endblock %}
+
+{% block header_title %}Web Programming Portfolio — Tatiana Mrad{% endblock %}
+{% block header_subtitle %}<p>A live site that grows one page or feature every week.</p>{% endblock %}
+
+{% block content%}
 <main class="container">
   <h1>Film Knowledge Quiz</h1>
   <section id="quizPanel">
