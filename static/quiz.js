@@ -111,7 +111,7 @@ return score;
 
 function calculatePercentage(score) {
   let percentage = (calculateScore() / questions.length) * 100 ;
-  return Math.round(percentage);;
+  return Math.round(percentage);
 }
 
 function getPerformanceMessage(percentage) {
@@ -138,7 +138,7 @@ function buildCorrection() {
    question = "Question " + (i+1) +": "+ questions[i].question;
    if(userAnswers[i]!== undefined)
    useranswer="Your answer: "+""+ questions[i].choices[userAnswers[i]];
-  else useranswer="Your answer: Not Answered"
+  else useranswer="Your answer: Not Answered";
    correctans= "Correct answer: "+""+ questions[i].choices[questions[i].answer]; 
    if(userAnswers[i]==questions[i].answer) result="Result: Correct";
    else result="Result: Incorrect";
