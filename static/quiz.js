@@ -81,14 +81,14 @@ function saveAnswer(choiceIndex) {
 
 function goNext() {
   if(currentQuestion < questions.length-1)
-  currentQuestion++;
-renderQuestion();
+    currentQuestion++;
+  renderQuestion();
 }
 
 function goPrevious() {
   if(currentQuestion > 0)
-  currentQuestion--;
-renderQuestion();
+     currentQuestion--;
+  renderQuestion();
 }
 
 function goFirst() {

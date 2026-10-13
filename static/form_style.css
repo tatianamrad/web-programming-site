@@ -69,6 +69,21 @@ label {
   font-size: 0.98rem;
 }
 
+/* Hide the review panel by default */
+#review_panel {
+    display: none;
+}
+
+/* When JavaScript adds the 'open' class, show the panel and hide the form */
+#review_panel.open {
+    display: block;
+}
+
+#review_panel.open ~ #form_container,
+#form_container.hidden {
+    display: none;
+}
+
 /* Automatic Required Field Asterisks */
 label:has(+ input[required]),
 label:has(+ select[required]) {

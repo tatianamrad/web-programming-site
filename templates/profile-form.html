@@ -189,4 +189,57 @@
 <input type="reset" value="Clear Form">
 
 </form>
+
+<!-- read-only review panel -->
+<h2>Review Your Profile</h2> 
+<p>Please review your answers and details below before submitting to the server.</p>
+
+<div id="review_panel"> 
+<input type="hidden" name="form_version" value="2026-2027">
+
+<fieldset>
+<legend>1. Personal Information</legend>
+<label for="student_id"> Student ID: <span id="review_student_id"></span> </label>
+<label for="fullname"> Full Name: <span id="review_fullname"></span></label>
+<label for="email">USEK Email: <span id="review_email"></span> </label>
+<label for="phone">Mobile Number: <span id="review_phone"></span></label>
+<label for="birthdate"> Date of Birth: <span id="review_birthdate"></span></label>
+<label for="portfolio"> GitHub: <span id="review_portfolio"></span></label>
+<label for="gin446">GIN446 website: <span id="review_gin446"></span></label>
+</fieldset>
+
+<fieldset>
+<legend>2. Academic Information</legend>
+<label for="major"> Engineering Major: <span id="review_major"></span></label>
+<label for="gpa"> Current GPA / 100: <span id="review_gpa"></span></label>
+<label for="credits"> Credits Completed: <span id="review_credits"></span></label>
+<label for="graduation">Expected Graduation: <span id="review_graduation"></span></label>
+<label for="graduation_month">Expected Graduation Month & Year:<span id="review_graduation_month"></span> </label>
+<label for="internship_completed">Internship Completed? <span id="review_internship_completed"></span></label>
+</fieldset>
+
+<fieldset>
+<legend>3. Technical Background</legend>
+<label for="experience">All areas of experience: <span id="review_experience"></span></label> 
+<label for="language">Primary Programming Language: <span id="review_language"></span></label>
+<label for="software">Engineering Software Used: <span id="review_software"></span></label>
+</fieldset>
+
+<fieldset>
+<legend>4. Final Year Project</legend>
+<label for="project_title"> Proposed Project Title: <span id="review_project_title"></span></label>
+<label for="project_area">Preferred Project Area: <span id="review_project_area"></span></label>
+<label for="description">Brief Project Description: <span id="review_description"></span></label>
+<label for="team_size">Preferred Team Size:<span id="review_team_size"></span></label>
+<label for="project_color">Project Dashboard Color:<span id="review_project_color"></span></label>
+<label for="meeting_date">Preferred Meeting Date:<span id="review_meeting_date"></span></label>
+<label for="meeting_time">Preferred Meeting Time:<span id="review_meeting_time"></span></label>
+</fieldset>
+<br><br>
+
+<button type="button" id="edit_button">Edit</button>
+<button type="button" id="confirm_button">Confirm and Submit</button>
+
+</div>
+
 {% endblock %}
