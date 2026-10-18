@@ -70,18 +70,17 @@ label {
 }
 
 /* Hide the review panel by default */
-#review_panel {
+.panel {
     display: none;
 }
 
 /* When JavaScript adds the 'open' class, show the panel and hide the form */
-#review_panel.open {
+.panel.open {
     display: block;
 }
 
-#review_panel.open ~ #form_container,
-#form_container.hidden {
-    display: none;
+.hidden {
+   display: none; 
 }
 
 /* Automatic Required Field Asterisks */
@@ -293,4 +292,44 @@ p a,
 .profile-footer a {
   color: var(--highlight-color) !important;
   text-decoration: underline;
+}
+
+#edit_button,
+#confirm_button {
+  font-family: var(--font-family-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.85rem 1.8rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+#confirm_button {
+  background: linear-gradient(135deg, var(--highlight-color), #82a347);
+  color: #121C10;
+  border: 2px solid var(--highlight-color);
+  box-shadow: 0 4px 10px rgba(163, 194, 104, 0.3);
+}
+
+#confirm_button:hover {
+  background: linear-gradient(135deg, #b5d678, var(--highlight-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(163, 194, 104, 0.5);
+}
+
+#edit_button {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 2px solid var(--accent-border);
+}
+
+#edit_button:hover {
+  background-color: rgba(66, 91, 45, 0.3);
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+  transform: translateY(-2px);
 }

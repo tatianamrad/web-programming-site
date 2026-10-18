@@ -55,6 +55,7 @@ def home():
         {"week": 3, "title": "Home Page Without CSS", "url": "/no-css"},
         {"week": 4, "title": "Engineering Student Profile", "url": "/submit-profile"},
         {"week": 5, "title": "JavaScript app", "url": "/quiz"},
+        {"week": 6, "title": "Profile Form with Review", "url": "/profile-review"},
     ]
     return render_template("index.html", weekly_work=weekly_work)
 
@@ -105,6 +106,17 @@ def submit_profile():
 def quiz():
     return render_template("quiz.html")
 
+@app.route("/profile-review", methods=["GET", "POST"])
+def profile_review():
+    if request.method == "POST":
+        data = request.form.to_dict()
+        experience = request.form.getlist("experience")
+        software = request.form.getlist("software")
+        return render_template(
+            "profile.html", data=data, experience=experience, software=software
+        )
+
+    return render_template("form-week6.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
