@@ -99,13 +99,18 @@ async function buildCorrection() {
 // DOM manipulation and events will be studied later.
 
 async function submitQuiz() {
-  const score = await calculateScore();
-  const percentage = calculatePercentage(score);
-  const message = getPerformanceMessage(percentage);
-  const correction = await buildCorrection();
-  showResults(score, percentage, message, correction);
-  await calculateScore();
-  await buildCorrection();
+   const error = document.getElementById("error");
+   try{
+    const score = await calculateScore();
+    const percentage = calculatePercentage(score);
+    const message = getPerformanceMessage(percentage);
+    const correction = await buildCorrection();
+    showResults(score, percentage, message, correction);
+   }
+   catch(err){
+        error.textContent="Could not load question: "+ err.message;
+        error.hidden=false;
+   }
 }
 
 async function renderQuestion() {
