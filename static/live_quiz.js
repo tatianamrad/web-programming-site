@@ -82,11 +82,14 @@ async function buildCorrection() {
    const q= await getQuestion(i);
    question = "Question " + (i+1) +": "+ q.question;
    if(userAnswers[i]!== undefined)
-   useranswer="Your answer: "+""+ q.choices[userAnswers[i]];
-  else useranswer="Your answer: Not Answered";
+    useranswer="Your answer: "+""+ q.choices[userAnswers[i]];
+   else 
+    useranswer="Your answer: Not Answered";
    correctans= "Correct answer: "+""+ q.choices[q.answer]; 
-   if(userAnswers[i]==q.answer) result="Result: Correct";
-   else result="Result: Incorrect";
+   if(userAnswers[i]==q.answer) 
+    result="Result: Correct";
+   else 
+    result="Result: Incorrect";
    explanation ="Explanation: " +""+ q.explanation;
 
    correction += question +"\n\n"+ useranswer +"\n" + correctans +"\n" +result + "\n"+ explanation +"\n\n ------------------------------\n\n" ;
@@ -99,7 +102,10 @@ async function buildCorrection() {
 // DOM manipulation and events will be studied later.
 
 async function submitQuiz() {
+   const loading = document.getElementById("loading");
    const error = document.getElementById("error");
+   loading.hidden = false;
+   error.hidden = true;
    try{
     const score = await calculateScore();
     const percentage = calculatePercentage(score);
@@ -108,6 +114,7 @@ async function submitQuiz() {
     showResults(score, percentage, message, correction);
    }
    catch(err){
+        loading.hidden = true;
         error.textContent="Could not load question: "+ err.message;
         error.hidden=false;
    }
@@ -171,7 +178,9 @@ function showResults(score, percentage, message, correction) {
 
 // START APPLICATION
 async function init() { 
+  const loading = document.getElementById("loading");
   const error = document.getElementById("error");
+  loading.hidden=false;
   try{
   const response= await fetch("/api/questions/count");
    if (!response.ok) {
@@ -182,6 +191,7 @@ async function init() {
    await renderQuestion();
   }
   catch(err){
+    loading.hidden=true;
     error.textContent="Could not load question: "+err.message;
     error.hidden=false;
   }
