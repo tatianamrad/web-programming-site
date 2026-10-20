@@ -56,6 +56,7 @@ def home():
         {"week": 4, "title": "Engineering Student Profile", "url": "/submit-profile"},
         {"week": 5, "title": "JavaScript app", "url": "/quiz"},
         {"week": 6, "title": "Profile Form with Review", "url": "/profile-review"},
+        {"week": 7, "title": "Live Quiz with Fetch", "url": "/live-quiz"},
     ]
     return render_template("index.html", weekly_work=weekly_work)
 

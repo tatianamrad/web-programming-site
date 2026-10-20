@@ -1,17 +1,29 @@
 let total=0;
 const cache={};
 
-
+//application state
 let currentQuestion = 0; 
-const userAnswers = new Array(questions.length);
+const userAnswers = []; // the length isn't known until you fetch the count
 
+//helper that fetches one question with caching
+async function getQuestion(index) {
+  if (cache[index] !== undefined)
+  return cache[index];
+  else {
+     const response = await fetch(`/api/question/${index}`); 
+      if (!response.ok) 
+       throw new Error("HTTP " + response.status);
+  const data = await response.json(); 
+  cache[index] = data;
+  return data;}
+}
 
 function saveAnswer(choiceIndex) {
   userAnswers[currentQuestion]= choiceIndex;
 }
 
 function goNext() {
-  if(currentQuestion < questions.length-1)
+  if(currentQuestion < total-1)
     currentQuestion++;
   renderQuestion();
 }
@@ -28,20 +40,21 @@ function goFirst() {
 }
 
 function goLast() {
-  currentQuestion = questions.length-1;
+  currentQuestion = total-1;
   renderQuestion();
 }
 
-function calculateScore() {
+async function calculateScore() {
   let score = 0;
-  for (let i = 0; i < questions.length; i++){
-    if(userAnswers[i]==questions[i].answer) score++;
+  for (let i = 0; i < total; i++){
+    const q = await getQuestion(i);
+    if(userAnswers[i]== q.answer) score++;
   }
 return score;
 }
 
 function calculatePercentage(score) {
-  let percentage = (calculateScore() / questions.length) * 100 ;
+  let percentage = (score/total) * 100 ;
   return Math.round(percentage);
 }
 
@@ -58,22 +71,23 @@ let message ="";
 return message;
 }
 
-function buildCorrection() {
+async function buildCorrection() {
   let correction = "";
   let question="";
   let useranswer="";
   let correctans="";
   let result="";
   let explanation="";
-  for (let i = 0; i < questions.length;i++){
-   question = "Question " + (i+1) +": "+ questions[i].question;
+  for (let i = 0; i < total;i++){
+   const q= await getQuestion(i);
+   question = "Question " + (i+1) +": "+ q.question;
    if(userAnswers[i]!== undefined)
-   useranswer="Your answer: "+""+ questions[i].choices[userAnswers[i]];
+   useranswer="Your answer: "+""+ q.choices[userAnswers[i]];
   else useranswer="Your answer: Not Answered";
-   correctans= "Correct answer: "+""+ questions[i].choices[questions[i].answer]; 
-   if(userAnswers[i]==questions[i].answer) result="Result: Correct";
+   correctans= "Correct answer: "+""+ q.choices[q.answer]; 
+   if(userAnswers[i]==q.answer) result="Result: Correct";
    else result="Result: Incorrect";
-   explanation ="Explanation: " +""+ questions[i].explanation;
+   explanation ="Explanation: " +""+ q.explanation;
 
    correction += question +"\n\n"+ useranswer +"\n" + correctans +"\n" +result + "\n"+ explanation +"\n\n ------------------------------\n\n" ;
   }
@@ -84,33 +98,25 @@ function buildCorrection() {
 // PROVIDED INTERFACE CODE
 // DOM manipulation and events will be studied later.
 
-function submitQuiz() {
-  const score = calculateScore();
+async function submitQuiz() {
+  const score = await calculateScore();
   const percentage = calculatePercentage(score);
   const message = getPerformanceMessage(percentage);
-  const correction = buildCorrection();
+  const correction = await buildCorrection();
   showResults(score, percentage, message, correction);
+  await calculateScore();
+  await buildCorrection();
 }
 
-function submitQuiz() {
-  const score = calculateScore();
-  const percentage = calculatePercentage(score);
-  const message = getPerformanceMessage(percentage);
-  const correction = buildCorrection();
-  showResults(score, percentage, message, correction);
-}
-
-function renderQuestion() {
-  const q = questions[currentQuestion];
-
-  // QUESTION NUMBER
-  document.getElementById("progress").textContent =
-    `Question ${currentQuestion + 1} of ${questions.length}`;
-
-  // QUESTION
+async function renderQuestion() {
+  const loading = document.getElementById("loading");
+  const error = document.getElementById("error");
+  loading.hidden = false;
+  error.hidden=true;
+  try{
+  const q = await getQuestion(currentQuestion);
+  document.getElementById("progress").textContent =`Question ${currentQuestion + 1} of ${total}`;
   document.getElementById("questionText").textContent = q.question;
-
-  // CHOICES
   const choicesContainer = document.getElementById("choices");
   choicesContainer.innerHTML = "";
   for (let i = 0; i < q.choices.length; i++) {
@@ -120,13 +126,9 @@ function renderQuestion() {
     radio.type = "radio";
     radio.name = "answer";
     radio.value = i;
-    // Restore an answer previously selected
-    // by the user.
     if (userAnswers[currentQuestion] === i) {
       radio.checked = true;
     }
-    // When the user selects this answer,
-    // save its index.
     radio.onclick = function () {
       saveAnswer(i);
     };
@@ -134,22 +136,28 @@ function renderQuestion() {
     label.appendChild(document.createTextNode(" " + q.choices[i]));
     choicesContainer.appendChild(label);
   }
-
-  // NAVIGATION BUTTONS
   document.getElementById("firstBtn").disabled = currentQuestion === 0;
   document.getElementById("previousBtn").disabled = currentQuestion === 0;
-  document.getElementById("nextBtn").disabled =
-    currentQuestion === questions.length - 1;
-  document.getElementById("lastBtn").disabled =
-    currentQuestion === questions.length - 1;
+  document.getElementById("nextBtn").disabled = currentQuestion === total - 1;
+  document.getElementById("lastBtn").disabled = currentQuestion === total - 1;
+  }
+  catch(err){
+    error.textContent="Could not load question: "+err.message;
+    error.hidden=false;
+  }
+  finally {
+    loading.hidden = true;
+  }
 }
+
+  
 
 // DISPLAY RESULTS
 function showResults(score, percentage, message, correction) {
   document.getElementById("quizPanel").style.display = "none";
   document.getElementById("resultsPanel").style.display = "block";
   document.getElementById("scoreText").textContent =
-    `Score: ${score} / ${questions.length}`;
+    `Score: ${score} / ${total}`;
   document.getElementById("percentageText").textContent =
     `Percentage: ${percentage}%`;
   document.getElementById("performanceText").textContent = message;
@@ -157,4 +165,22 @@ function showResults(score, percentage, message, correction) {
 }
 
 // START APPLICATION
-renderQuestion();
+async function init() { 
+  const error = document.getElementById("error");
+  try{
+  const response= await fetch("/api/questions/count");
+   if (!response.ok) {
+    throw new Error("HTTP " + response.status);
+   }
+   const data = await response.json();
+   total = data.count;
+   await renderQuestion();
+  }
+  catch(err){
+    error.textContent="Could not load question: "+err.message;
+    error.hidden=false;
+  }
+}
+
+
+init();
