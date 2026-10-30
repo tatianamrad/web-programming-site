@@ -36,16 +36,16 @@
 <input type="email" id="email" name="email" pattern="[A-Za-z]+\.[A-Za-z]\.[A-Za-z]+@net\.usek\.edu\.lb" value="{{ data.get('email', '') }}" placeholder="student@net.usek.edu.lb"> {{ err('email') }}<br><br>
 
 <label for="phone">Mobile Number: </label>
-<input type="tel" id="phone" name="phone" placeholder="+961 70 123 456" pattern="\+961 [0-9]{2} [0-9]{3} [0-9]{3}" value="{{ data.get('phone', '') }}">{{ err('phone') }}<br><br>
+<input type="tel" id="phone" name="phone" placeholder="+961 70 123 456" value="{{ data.get('phone', '') }}">{{ err('phone') }}<br><br>
 
 <label for="birthdate"> Date of Birth:</label>
-<input type="date" id="birthdate" name="birthdate" size="45" min="1940-01-01" max="2008-12-31" value="{{ data.get('birthdate', '') }}"> {{ err('birthdate') }}<br><br>
+<input type="date" id="birthdate" name="birthdate" value="{{ data.get('birthdate', '') }}"> {{ err('birthdate') }}<br><br>
 
 <label for="portfolio"> GitHub: </label>
-<input type="url" id="portfolio" name="portfolio" pattern="https://github\.com/[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}" placeholder="https://github.com/username" value="{{ data.get('portfolio', '') }}"> {{ err('portfolio') }}<br><br>
+<input type="url" id="portfolio" name="portfolio" placeholder="https://github.com/username" value="{{ data.get('portfolio', '') }}"> {{ err('portfolio') }}<br><br>
 
 <label for="gin446">GIN446 website: </label>
-<input type="url" id="gin446" name="gin446" size="45" placeholder="Your RENDER website link" value="{{ data.get('gin446', '') }}"> {{ err('gin446') }} <br><br>
+<input type="url" id="gin446" name="gin446" placeholder="Your RENDER website link" value="{{ data.get('gin446', '') }}"> {{ err('gin446') }} <br><br>
 </fieldset>
 
 <fieldset>
@@ -79,7 +79,7 @@
   <input type="radio" id="Fall" name="graduation" value="Fall" {% if data.get('graduation')=='Fall' %}checked{% endif %}>
   <label for="Fall">Fall</label>
 </fieldset> {{ err('graduation') }}
-<br>
+<br><br>
 
 <label for="graduation_month">Expected Graduation Month & Year: </label>
 <input type="month" id="graduation_month" name="graduation_month" min="2026-09" value="{{ data.get('graduation_month', '') }}"> {{ err('graduation_month') }} 
@@ -118,7 +118,7 @@
 <label for="Signal_Processing">Signal Processing</label> {{ err('skills') }} <br> <br>
 
 <label for="language">Primary Programming Language:</label>
-<input list="languages" id="language" name="language" size="40" placeholder="Type or select a language from the list..." value="{{ data.get('language', '') }}"> {{ err('language') }} <br><br>
+<input list="languages" id="language" name="language" placeholder="Type or select a language from the list..." value="{{ data.get('language', '') }}"> {{ err('language') }} <br><br>
 <datalist id="languages">
     <option value="Python"></option>
     <option value="C++"></option>
@@ -194,7 +194,7 @@
 
 
 <input type="checkbox" id="confirmation" name="confirmation" {% if data.get('confirmation') %}checked{% endif %}>
-<label for="confirmation">I confirm that the information provided is accurate.</label> <br> {{ err('confirmation') }} 
+<label for="confirmation">I confirm that the information provided is accurate.</label>  <br>  {{ err('confirmation') }} <br>
 
 <input type="submit" value="Submit Profile">
 <input type="reset" value="Clear Form">
